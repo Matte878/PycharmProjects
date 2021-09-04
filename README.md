@@ -1,8 +1,2 @@
-# PycharmProjects
-List of projects (it will be updated as more items will be added):
-1) Memory card game
-2) Tic-Tac-Toe game
-3) Random password generator
-4) Credit card number validation
-
-You can find each project in its respective folder
+Representation on a bar chart of age of claims occured (early, middle or late claims) based on the age group of policyholders (0-25, 25-40, 40-60, 60-80).
+Data are elaborated starting from a raw database.
