@@ -1,0 +1,23 @@
+import pandas as pd
+import numpy as np
+
+# Let's read and open our 2 Excel files
+doc1 = pd.read_excel('file1.xlsx')
+doc2 = pd.read_excel('file2.xlsx')
+
+# In our 2 dataframes let's sort the names in alphabetical order
+df1 = pd.DataFrame(doc1.sort_values(by=['Nome']))
+df2 = pd.DataFrame(doc2.sort_values(by=['Nome']))
+
+# Let's add to the first file the name and ID from the second file so we can check equal values in column "Exact"
+df1['Nome doc2'] = df2['Nome']
+df1['ID doc2'] = df2['ID']
+
+# Then the Dataframe is converted to numpy array with new column names
+new_df = pd.DataFrame(df1.to_numpy(), columns=['Nome1', 'ID1', 'Nome2', 'ID2'])
+
+# Let's finally check the equivalence between columns
+new_df['Exact'] = np.where((new_df['ID1'] == new_df['ID2']) & (new_df['ID1'] == new_df['ID2']), 'OK', 'MISMATCH')
+
+# And create a new final Excel file with the result
+new_df.to_excel(r'C:\Users\Matteo\PycharmProjects\Compare_columns\final_file.xlsx', index=False)
